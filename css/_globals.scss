@@ -1,0 +1,59 @@
+html{
+    box-sizing: border-box;
+}
+*,*::after,*::before{
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+
+.wrapper{
+    margin:0 auto;
+    max-width: 1200px;
+    text-align: center;
+}
+body{
+    display: inline-block;
+    width:100%;
+    text-align: center;
+    margin:2rem 0;
+    font-family: 'Roboto',sans-serif;
+}
+img{
+    width: 100%;
+}
+
+input{
+    padding:.4rem;
+}
+select{
+    padding:.4rem;
+}
+
+
+.pokemon{
+    display: flex;
+    justify-content: space-between;
+    
+    flex-wrap: wrap;
+    margin:3rem 2rem;
+    &__card{
+        border: 1px solid black;
+        flex-basis: calc(33.3% - 1rem);
+    }
+    &__info{
+        margin-top:1rem;
+        h1{
+            text-transform: capitalize;
+            
+        }
+        p{
+            margin:1rem 0;
+            span{
+                text-transform: capitalize;
+            }
+        }
+        
+    }
+}
+
