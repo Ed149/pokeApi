@@ -13,15 +13,10 @@ html{
     text-align: center;
 }
 body{
-    display: inline-block;
-    width:100%;
-    text-align: center;
-    margin:2rem 0;
+        margin:2rem 0;
     font-family: 'Roboto',sans-serif;
 }
-img{
-    width: 100%;
-}
+
 
 input{
     padding:.4rem;
@@ -30,30 +25,113 @@ select{
     padding:.4rem;
 }
 
+#search{
+    display: inline-block;
+    width:15rem;
+    border:none;
+    border-bottom: 1px solid rgb(173, 162, 162);
+    outline:none;
+    
+}
+
+.load{
+    display: none;
+    width:4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border:2px solid black;
+    position: relative;
+    overflow: hidden;
+    animation: girar 2s linear infinite;
+    &::before{
+        content: '';
+        width: 4rem;
+        height: 2rem;
+        background-color: red;
+        border:10px solid red;
+        position: absolute;
+        left: 0;
+    }
+    &__detail{
+        width:4rem;
+        height: .3rem;
+        background-color:black;
+        position: relative;
+        margin-top: 1.8rem;
+        opacity: 1;
+        &::before{
+            content: '';
+            width:1rem;
+            height:1rem;
+            border-radius: 50%;
+            position: absolute;
+            margin:auto;
+            border:10px solid black;
+            margin-top: -.5rem;
+            margin-left: -.72rem;
+            background-color: black;
+        }
+        &::after{
+            content: '';
+            width: .6rem;
+            height: .6rem;
+            background-color: white;
+            border-radius: 50%;
+            margin-left: -.44rem;
+            margin-top: -.15rem;
+            position: absolute;
+        }
+    }
+}
+    
+
+
+
+@keyframes girar{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
 
 .pokemon{
+    height:80vh;
     display: flex;
-    justify-content: space-between;
-    
     flex-wrap: wrap;
-    margin:3rem 2rem;
+    justify-content: center;
+    align-items: center;
+    
     &__card{
-        border: 1px solid black;
-        flex-basis: calc(33.3% - 1rem);
+        flex-basis: calc(33.3% - 2rem);
+        border:1px solid rgb(139, 134, 134);
+        margin-top: 1rem;
+        border-radius: .7rem;
+        overflow: hidden;
+        box-shadow: .3rem .4rem .45rem rgb(197, 177, 177);
+    }
+    &__img img{
+        width: 50%;
+        text-align: center;
+    }
+    &__number{
+        display: flex;
+        justify-content:end;
+        margin-bottom: 1.6rem;
+        span{
+            color:white;
+            padding:1rem 1.3rem;
+            background-color:red;
+            border-bottom-left-radius: .7rem;
+        }
     }
     &__info{
-        margin-top:1rem;
+        text-transform: capitalize;
+        padding:1rem 0;
         h1{
-            text-transform: capitalize;
-            
+            margin-bottom: .4rem;
         }
-        p{
-            margin:1rem 0;
-            span{
-                text-transform: capitalize;
-            }
-        }
-        
     }
 }
 

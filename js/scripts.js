@@ -1,86 +1,89 @@
 'use strict'
 
 window.addEventListener('load',()=>{
-
     const typeSelect = document.querySelector('#types');
-    const pokeImg = document.querySelector('.pokemon__card');
-    const divPoke = document.querySelector('#pokemon');
-    const typesSelect = document.querySelector('#types');
+    const pokeContainer = document.querySelector('#pokemon');
     const search = document.querySelector('#search');
+    const pk = document.querySelector('#pokemon__card');
+    const load = document.querySelector('.load');
 
-    typesSelect.addEventListener('click',()=>{
-        var valor =typeSelect.value;
-        console.log(valor);
-    });
+    // for(let i =0; i <=10;i++){
+    //     var cl = pk.cloneNode(true);
+    //     pokeContainer.appendChild(cl);
+
+    // }
+
     search.addEventListener('keyup',()=>{
-        var val = search.value;
-        console.log(val);
-        getPokemon(val);
+        load.style.display = 'block';
+
+        var pokeSearch = search.value;
+        console.log(pokeSearch);
+        
+        getPokemons(pokeSearch)
+        .then(response => response.json())
+        .then(data =>{
+            console.log(`Nombre del pokemon: ${data.name}`);
+            renderPokemon(data);
+        })
+
     });
 
-    getPokemonType()
-        .then(results => results.json())
-        .then(types =>{
-            pokeType(types.results);
-        });
 
-    function getPokemonType(type){
-        return fetch(`https://pokeapi.co/api/v2/type`);
+
+        
+    function getPokemons(name = 1){    
+        return fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
     }
+    
+    function renderPokemon(data){
+        const stats = {
+            id: data.id,
+            name: data.name,
+            img: data.sprites.other.dream_world.front_default,
+            type:[]
+        }
+        for(let i=0; i < data.types.length; i++){
+            stats.type.push(data.types[i].type.name);
+            
+        }
+        console.log(stats.type);
+        if(stats.type[0] == "electric"){
+            console.log(pk);
+        }
+        
 
+        
+        pokeContainer.innerHTML=
+            `
+            <div class="pokemon__card" id="pokemon__card">
+                <div class="pokemon__number">
+                    <span># ${stats.id}</span>
+                </div>
+                <div class="pokemon__img">
+                    <img src="${stats.img}" alt="">
+                </div>
+                <div class="pokemon__info">
+                    <h1>${stats.name}</h1>
+                    <p>Type: <span>${stats.type}</span></p>
+                    <div class="poke__stats">
+                        <div class="stats">
 
-    function getPokemon(name){
-        const res = fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
-            .then(response=>response.json())
-            .then(data=>{
-                console.log(data);
-                const poke = {
-                    id: data.id,
-                    img: data.sprites.other.dream_world.front_default,
-                    name: data.name,
-                    type: [],
-                    stats: []
+                        </div>
+                        <div class="stats">
 
-                }
-                for (let i = 0; i < data.types.length; i++) {
-                    poke.type.push(data.types[i].type.name);
-                }
-                for(let j = 0; j < data.stats.length; j++){
-                        poke.stats.push(data.stats[j]);
-                    
-                }
-                
-                console.log(poke);
+                        </div>
+                        <div class="stats">
 
-                divPoke.innerHTML =
-                        `
-                    <div class="pokemon__card" >
-                        <div class="pokemon__img">
-                            <img src='${poke.img}' alt=""></div>
-                            <div class="pokemon__info">
-                                <p>#${poke.id} </p>
-                                <h1>${poke.name}</h1>
-                                <p>Type: <span>${poke.type}</span></p>
-                            </div>
+                        </div>
                     </div>
-                
-                
-                `;
-            });
+                </div>
+
+            </div>
+
+            
+            `
         
     }
 
-
-
-    function pokeType(types){
-        types.map(type =>{
-            var opt = document.createElement('option');
-            opt.innerHTML = type.name;
-            typeSelect.appendChild(opt);
-
-        })
-    }
-    
-   
 
 });
