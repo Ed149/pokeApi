@@ -6,132 +6,215 @@ html{
     padding:0;
     margin:0;
 }
+img{
+    width: 100%;
+}
 
-.wrapper{
-    margin:0 auto;
-    max-width: 1200px;
+.container{
+    margin:2rem auto;
+    max-width: 90%;
     text-align: center;
 }
-body{
-        margin:2rem 0;
-    font-family: 'Roboto',sans-serif;
-}
-
-
-input{
-    padding:.4rem;
-}
-select{
-    padding:.4rem;
-}
-
-#search{
-    display: inline-block;
-    width:15rem;
-    border:none;
-    border-bottom: 1px solid rgb(173, 162, 162);
-    outline:none;
-    
-}
-
-.load{
-    display: none;
-    width:4rem;
-    height: 4rem;
-    border-radius: 50%;
-    border:2px solid black;
-    position: relative;
-    overflow: hidden;
-    animation: girar 2s linear infinite;
-    &::before{
-        content: '';
-        width: 4rem;
-        height: 2rem;
-        background-color: red;
-        border:10px solid red;
-        position: absolute;
-        left: 0;
-    }
-    &__detail{
-        width:4rem;
-        height: .3rem;
-        background-color:black;
-        position: relative;
-        margin-top: 1.8rem;
-        opacity: 1;
-        &::before{
-            content: '';
-            width:1rem;
-            height:1rem;
-            border-radius: 50%;
-            position: absolute;
-            margin:auto;
-            border:10px solid black;
-            margin-top: -.5rem;
-            margin-left: -.72rem;
-            background-color: black;
-        }
-        &::after{
-            content: '';
-            width: .6rem;
-            height: .6rem;
-            background-color: white;
-            border-radius: 50%;
-            margin-left: -.44rem;
-            margin-top: -.15rem;
-            position: absolute;
-        }
-    }
-}
-    
-
-
-
-@keyframes girar{
-    from{
-        transform: rotate(0deg);
-    }
-    to{
-        transform: rotate(360deg);
-    }
-}
-
 .pokemon{
-    height:80vh;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    
+    flex-wrap: wrap;
+    margin: 2rem 0;
     &__card{
-        flex-basis: calc(33.3% - 2rem);
-        border:1px solid rgb(139, 134, 134);
-        margin-top: 1rem;
-        border-radius: .7rem;
+        margin: 1rem 0;
+        width: 160px;
+        // height: 100px;
+        border: 1px solid black;
+        border-radius: 1rem;
         overflow: hidden;
-        box-shadow: .3rem .4rem .45rem rgb(197, 177, 177);
-    }
-    &__img img{
-        width: 50%;
-        text-align: center;
-    }
-    &__number{
-        display: flex;
-        justify-content:end;
-        margin-bottom: 1.6rem;
-        span{
-            color:white;
-            padding:1rem 1.3rem;
-            background-color:red;
-            border-bottom-left-radius: .7rem;
+        text-align: start;
+        position: relative;
+
+        &:not(last-child){
+            margin-right: .4rem;
         }
+        
     }
+    // &__id{
+    //     display: flex;
+    //     justify-content: flex-end;
+    //     span{
+    //         padding:1.3rem;
+    //         background: red;
+    //         border-bottom-left-radius: 1rem;
+    //         color: white;
+    //     }
+    // }
     &__info{
+        // padding:3re,
+        padding:0 .7rem;
+    }
+    &__img{
+        background-image: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/19.png');
+        background-repeat: no-repeat;
+
+        width: 60%;
+        position: absolute;
+        bottom: 0;
+        top: 35px;
+        right:0;
+        // padding:1rem .7rem;
+        // object-fit: cover;
+
+    }
+    &__name{
+        margin:1rem 0;
         text-transform: capitalize;
-        padding:1rem 0;
-        h1{
-            margin-bottom: .4rem;
-        }
+        letter-spacing: .1rem;
+    }
+    &__type{
+        margin:1.6rem 0;
     }
 }
+
+
+// .wrapper{
+//     max-width: 90%;
+//     margin: 2rem auto;
+//     text-align: center;
+// }
+// .pokemon{
+//     margin:3rem 0;
+//     display: flex;
+//     justify-content: center;
+//     flex-direction: column;
+//     width: 300px;
+//     &__card{
+//         border:1px solid black;
+//     }
+// }
+
+// .wrapper{
+//     margin:0 auto;
+//     max-width: 1200px;
+//     text-align: center;
+// }
+// body{
+//         margin:2rem 0;
+//     font-family: 'Roboto',sans-serif;
+// }
+
+
+// input{
+//     padding:.4rem;
+// }
+// select{
+//     padding:.4rem;
+// }
+
+// #search{
+//     display: inline-block;
+//     width:15rem;
+//     border:none;
+//     border-bottom: 1px solid rgb(173, 162, 162);
+//     outline:none;
+    
+// }
+
+// .load{
+//     display: none;
+//     width:4rem;
+//     height: 4rem;
+//     border-radius: 50%;
+//     border:2px solid black;
+//     position: relative;
+//     overflow: hidden;
+//     animation: girar 2s linear infinite;
+//     &::before{
+//         content: '';
+//         width: 4rem;
+//         height: 2rem;
+//         background-color: red;
+//         border:10px solid red;
+//         position: absolute;
+//         left: 0;
+//     }
+//     &__detail{
+//         width:4rem;
+//         height: .3rem;
+//         background-color:black;
+//         position: relative;
+//         margin-top: 1.8rem;
+//         opacity: 1;
+//         &::before{
+//             content: '';
+//             width:1rem;
+//             height:1rem;
+//             border-radius: 50%;
+//             position: absolute;
+//             margin:auto;
+//             border:10px solid black;
+//             margin-top: -.5rem;
+//             margin-left: -.72rem;
+//             background-color: black;
+//         }
+//         &::after{
+//             content: '';
+//             width: .6rem;
+//             height: .6rem;
+//             background-color: white;
+//             border-radius: 50%;
+//             margin-left: -.44rem;
+//             margin-top: -.15rem;
+//             position: absolute;
+//         }
+//     }
+// }
+    
+
+
+
+// @keyframes girar{
+//     from{
+//         transform: rotate(0deg);
+//     }
+//     to{
+//         transform: rotate(360deg);
+//     }
+// }
+
+// .pokemon{
+//     height:80vh;
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: center;
+//     align-items: center;
+//     &__card{
+//         flex-basis: calc(33.3% - 2rem);
+//         border:1px solid rgb(139, 134, 134);
+//         margin-top: 1rem;
+//         border-radius: .7rem;
+//         overflow: hidden;
+//         box-shadow: .3rem .4rem .45rem rgb(197, 177, 177);
+//         flex-wrap: wrap;
+        
+//     }
+//     &__img img{
+//         width: 50%;
+//         text-align: center;
+//     }
+//     &__number{
+//         display: flex;
+//         justify-content:end;
+//         margin-bottom: 1.6rem;
+//         span{
+//             color:white;
+//             padding:1rem 1.3rem;
+//             background-color:red;
+//             border-bottom-left-radius: .7rem;
+//         }
+//     }
+//     &__info{
+//         text-transform: capitalize;
+//         padding:1rem 0;
+//         h1{
+//             margin-bottom: .4rem;
+//         }
+//     }
+// }
 
